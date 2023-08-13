@@ -1,0 +1,29 @@
+.header{
+    height: 80px;
+    background-color: rgb(10, 10, 87);
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+}
+
+.header-left{
+    padding-left: 50px;
+}
+
+.header-right{
+    padding-right: 60px;
+    padding-top: 10px;
+    display: flex;
+}
+.link{
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.profile-icon{
+    width: 70px;
+}
+
+.user-icon{
+    width: 60px;
+}
