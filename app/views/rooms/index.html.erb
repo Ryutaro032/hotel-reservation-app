@@ -1,0 +1,33 @@
+<h1>登録済み一覧</h1>
+<p><%=link_to"施設の登録", :new_room %></p>
+<div class="table">
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>施設名</th>
+                <th>施設の紹介</th>
+                <th>料金（/日）</th>
+                <th>作成日</th>
+                <th>編集</th>
+                <th>削除</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% @rooms.each do |room| %>
+            <tr>
+                <td><%= room.user_id %></td>
+                <td><%= room.room_image %></td>
+                <td><%= room.room_name %></td>
+                <td><%= room.introduction %></td>
+                <td><%= room.hotel_fee %></td>
+                <td><%= room.created_at %></td>
+                <td><%=%></td>
+                <td><%=%></td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+</div>
+
