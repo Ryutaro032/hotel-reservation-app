@@ -16,7 +16,8 @@
     </div>
     <div class="dropdown">
         <ul class="dropdown-list">
-            <li><%= %></li>
+            <li><%=link_to"施設の登録", :new_room %></li>
+            <li><%= link_to"登録施設一覧", :rooms %></li>
             <li><%= %></li>
             <li><%= %></li>
             <li><%= link_to "LogOut", destroy_user_session_path, method: :delete, class: "header-nav link" %></li>

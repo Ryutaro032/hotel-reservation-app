@@ -1,5 +1,4 @@
 <h1>登録済み一覧</h1>
-<p><%=link_to"施設の登録", :new_room %></p>
 <div class="table">
     <table>
         <thead>
@@ -30,7 +29,7 @@
                 <td><%= room.hotel_fee %></td>
                 <td><%= room.created_at %></td>
                 <td><%= link_to"編集",[:edit, room] %></td>
-                <td><%=%></td>
+                <td><%= link_to "削除", room, method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
             </tr>
         <% end %>
         </tbody>
