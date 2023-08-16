@@ -18,8 +18,12 @@
         <% @rooms.each do |room| %>
             <tr>
                 <td><%= room.user_id %></td>
-                <td><%= room.room_image %></td>
-                <td><%= room.room_name %></td>
+                <td>
+                    <% if room.room_image.attached? %>
+                        <%=  image_tag room.room_image %>
+                    <%end%>
+                </td>
+                <td><%= link_to room.room_name, room %></td>
                 <td><%= room.introduction %></td>
                 <td><%= room.hotel_fee %></td>
                 <td><%= room.created_at %></td>
