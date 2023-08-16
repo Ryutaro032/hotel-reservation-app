@@ -28,6 +28,10 @@
     width: 60px;
 }
 
+.hotel-icon{
+    width: 100%;
+}
+
 table{
     width: 85%;
     margin: 0 auto;
