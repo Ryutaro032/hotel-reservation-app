@@ -1,22 +1,20 @@
-<h1>登録済み一覧</h1>
+<h1>予約済み一覧</h1>
 <div class="table">
     <table>
         <thead>
             <tr>
-                <th></th>
-                <th></th>
+                <th>施設画像</th>
                 <th>施設名</th>
                 <th>施設の紹介</th>
-                <th>料金（/日）</th>
-                <th>作成日</th>
-                <th>編集</th>
-                <th>削除</th>
+                <th>合計料金(円)</th>
+                <th>チェックイン日</th>
+                <th>チェックアウト日</th>
+                <th>予約確定日時</th>
             </tr>
         </thead>
         <tbody>
-        <% @rooms.each do |room| %>
+        <% @reservations.each do |reservation| %>
             <tr>
-                <td><%= room.user_id %></td>
                 <td>
                     <% if room.room_image.attached? %>
                         <%=  image_tag room.room_image %>
@@ -26,10 +24,10 @@
                 </td>
                 <td><%= link_to room.room_name, room %></td>
                 <td><%= room.introduction %></td>
-                <td><%= room.hotel_fee %>〜</td>
-                <td><%= room.created_at %></td>
-                <td><%= link_to"編集",[:edit, room] %></td>
-                <td><%= link_to "削除", room, method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
+                <td><%= reservation.total_amount %></td>
+                <td><%= reservation.check_in_date %></td>
+                <td><%= reservation.check_out_date %></td>
+                <td><%= reservation.created_at %></td>
             </tr>
         <% end %>
         </tbody>
