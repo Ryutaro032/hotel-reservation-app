@@ -1,24 +1,30 @@
 class ReservationsController < ApplicationController
   before_action :authenticate_user!
+  require 'date'
+
   def index
     @reservations = Reservation.where(user_id: current_user.id).includes(:user)
   end
 
-  def create
+  def confirm
     @reservation = Reservation.new(reservation_params)
     @reservation.user_id = current_user.id
-    if @reservation.save
-      redirect_to :reservations
-    end
+    @reservation.stay_days = (@reservation.check_out_date - @reservation.check_in_date).to_i
+    @reservation.total_amount = (@reservation.stay_days * @reservation.number_of_people * @reservation.room.hotel_fee).to_i
+    session[:reservations] = @reservation
   end
 
-  def show
+  def back
+    @reservation = Reservation.new(session[:reservations])
+    @reservation.user_id = current_user.id
+    session.delete(:reservations)
+    redirect_to room_path(@reservation.room_id)
   end
 
-  def edit
-  end
-
-  def update
+  def create
+    Reservation.create!(session[:reservations])
+    session.delete(:reservations)
+    redirect_to :reservations
   end
 
   def destroy

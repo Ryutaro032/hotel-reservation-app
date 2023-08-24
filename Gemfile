@@ -58,3 +58,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "devise", "~> 4.9"
 
 gem 'carrierwave', '~> 2.0'
+
+gem 'pry-rails'

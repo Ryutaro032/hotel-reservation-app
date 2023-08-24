@@ -9,4 +9,8 @@ Rails.application.routes.draw do
   resources :rooms do
     resources :reservations
   end 
+
+  post 'reservations/confirm' 
+  post 'reservations/back'
+
 end
