@@ -1,8 +1,8 @@
-<% if user_signed_in? %>
-    <div class="header">
-        <div class="header-left">
-            <h2>STATION</h2>
-        </div>
+<div class="header">
+    <div class="header-left">
+        <h2>STATION</h2>
+    </div>
+    <% if user_signed_in? %>
         <div class="header-right">
             <div class="profile-icon">
                 <% if current_user.icon_image? %>
@@ -13,19 +13,21 @@
             </div>
             <p class="name"><%= current_user.name %></p>
         </div>
-    </div>
-    <div class="dropdown">
-        <ul class="dropdown-list">
-            <li><%=link_to"施設の登録", :new_room %></li>
-            <li><%= link_to"登録施設一覧", :rooms %></li>
-            <li><%= link_to"予約済み一覧", :reservations %></li>
-            <li><%= %></li>
-            <li><%= link_to "LogOut", destroy_user_session_path, method: :delete, class: "header-nav link" %></li>
-        </ul>
-    </div>
-<% else %>
-    <ul>
-        <li><%= link_to "LogIn", new_user_session_path, class: "header-nav" %></li>
-        <li><%= link_to "SignUp", new_user_registration_path, class: "header-nav" %></li>
-    </ul>
-<% end %>
+        <nav class="dropdown">
+            <ul class="dropdown-list">
+                <li><%=link_to"施設の登録", :new_room %></li>
+                <li><%= link_to"登録施設一覧", rooms_home_path %></li>
+                <li><%= link_to"予約済み一覧", :reservations %></li>
+                <li><%= link_to"アカウント設定", user_path(id: current_user) %></li>
+                <li><%= link_to "LogOut", destroy_user_session_path, method: :delete, class: "header-nav link" %></li>
+            </ul>
+        </nav>
+    <% else %>
+        <div class="dropdown">
+            <ul>
+                <li><%= link_to "LogIn", new_user_session_path, class: "header-nav" %></li>
+                <li><%= link_to "SignUp", new_user_registration_path, class: "header-nav" %></li>
+            </ul>
+        </div>
+    <% end %>
+</div>

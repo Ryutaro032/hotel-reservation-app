@@ -31,7 +31,10 @@
             <td><%= f.number_field :number_of_people %></td>
         </tr>
     </table>
-    <%= f.submit "この日程で予約する" %>
+    <% if user_signed_in? %>
+        <%= f.submit "この日程で予約する" %>
+    <% end %>
+        
 <%end%>
-    <%= link_to "施設一覧に戻る", :rooms %>
+    <%= link_to "施設一覧に戻る", rooms_path %>
 </div>

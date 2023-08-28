@@ -6,6 +6,10 @@
     color: #fff;
 }
 
+.header-nav{
+    color: #fff;
+}
+
 .header-left{
     padding-left: 50px;
 }
@@ -17,7 +21,6 @@
 }
 .link{
     text-decoration: none;
-    color: aliceblue;
 }
 
 .profile-icon{
@@ -75,4 +78,14 @@ table td{
 
 .room-data{
     font-size: 18px;
+}
+
+.area-link{
+    display: flex;
+    width: 100%;
+}
+.area-image{
+    height: 380px;
+    width: 320px;
+    margin: 15px;
 }
