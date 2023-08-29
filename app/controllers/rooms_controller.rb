@@ -1,5 +1,4 @@
 class RoomsController < ApplicationController
-  # before_action :authenticate_user!
 
   def home
     @rooms = Room.where(user_id: current_user.id).includes(:user)

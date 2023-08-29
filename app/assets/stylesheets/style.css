@@ -1,3 +1,7 @@
+li{
+    list-style: none;
+}
+
 .header{
     height: 80px;
     background-color: rgb(10, 10, 87);
@@ -19,8 +23,25 @@
     padding-top: 10px;
     display: flex;
 }
+
+.dropdown-list.test2 {
+    display: block;
+  }
+
+.dropdown-list{
+    display: none;
+    width: 10%;
+    position: absolute;
+    top: 72px;
+    right: 8px;
+    background-color: #575555;
+    opacity: 0.7;
+}
+
 .link{
     text-decoration: none;
+    list-style: none;
+    color: #fff;
 }
 
 .profile-icon{

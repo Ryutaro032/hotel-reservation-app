@@ -4,29 +4,29 @@
     </div>
     <% if user_signed_in? %>
         <div class="header-right">
-            <div class="profile-icon">
+            <div class="profile-icon dropdown-btn">
                 <% if current_user.icon_image? %>
                     <img src='<%= current_user.icon_image %>' class="user-icon" alt="ユーザーアイコン">
                 <% else %>
                     <%= image_tag src='default.png', class: "user-icon", alt: "ユーザーアイコン" %>
                 <% end %>
             </div>
-            <p class="name"><%= current_user.name %></p>
+            <p class="name dropdown-btn" id = "btn"><%= current_user.name %></p>
+            <nav class="dropdown" >
+                <ul class="dropdown-list" id = "test" >
+                    <li class="dropdown-item"><%=link_to"施設の登録", :new_room , class: "link"%></li>
+                    <li class="dropdown-item"><%= link_to"登録施設一覧", rooms_home_path, class: "link" %></li>
+                    <li class="dropdown-item"><%= link_to"予約済み一覧", :reservations, class: "link" %></li>
+                    <li class="dropdown-item"><%= link_to"アカウント設定", user_path(id: current_user), class: "link" %></li>
+                    <li class="dropdown-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "link" %></li>
+                </ul>
+            </nav>
         </div>
-        <nav class="dropdown">
-            <ul class="dropdown-list">
-                <li><%=link_to"施設の登録", :new_room %></li>
-                <li><%= link_to"登録施設一覧", rooms_home_path %></li>
-                <li><%= link_to"予約済み一覧", :reservations %></li>
-                <li><%= link_to"アカウント設定", user_path(id: current_user) %></li>
-                <li><%= link_to "LogOut", destroy_user_session_path, method: :delete, class: "header-nav link" %></li>
-            </ul>
-        </nav>
     <% else %>
-        <div class="dropdown">
+        <div>
             <ul>
-                <li><%= link_to "LogIn", new_user_session_path, class: "header-nav" %></li>
-                <li><%= link_to "SignUp", new_user_registration_path, class: "header-nav" %></li>
+                <li><%= link_to "ログイン", new_user_session_path, class: "header-nav" %></li>
+                <li><%= link_to "新規登録", new_user_registration_path, class: "header-nav" %></li>
             </ul>
         </div>
     <% end %>
