@@ -32,6 +32,7 @@ class RoomsController < ApplicationController
     @room.user_id = current_user.id
     if @room.save
       redirect_to rooms_home_path
+      flash[:notice] = "新規登録が完了しました"
     else
       render "new"
     end
@@ -50,6 +51,7 @@ class RoomsController < ApplicationController
     @room.user_id = current_user.id
     if @room.update(room_params)
       redirect_to rooms_home_path
+      flash[:notice] = "編集が完了しました"
     else
       render "edit"
     end
@@ -64,7 +66,9 @@ class RoomsController < ApplicationController
 private
 
   def room_params
-    params.require(:room).permit(:room_image, :room_name, :introduction, :hotel_fee, :address)
+    params.require(:room).permit(
+      :room_image, :room_name, :introduction, :hotel_fee, :address
+    )
   end
 
 end

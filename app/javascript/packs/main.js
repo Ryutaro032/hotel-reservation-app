@@ -1,12 +1,11 @@
-console.log('hoge')
 document.addEventListener("turbolinks:load", function(){
-    const test = document.getElementById('test');
-    const btn = document.getElementById('btn');
+    const dropdown_list = document.getElementById('dropdown_list');
+    const btn  = document.getElementById('btn');
     btn.addEventListener('click', () => {
-      if(test.classList.contains('test2')){//　containsメソッドで、test2クラスが既に付与されているか判定 
-        test.classList.remove('test2');
+      if(dropdown_list.classList.contains('open')){
+        dropdown_list.classList.remove('open');
       }else{
-        test.classList.add('test2');
+        dropdown_list.classList.add('open');
       }
     });
 });

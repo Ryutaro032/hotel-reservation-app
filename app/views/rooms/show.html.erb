@@ -1,4 +1,5 @@
 <h1>ホテル詳細</h1>
+<%= render "shared/error", obj: @room %>
 <div class="table">
 <%= form_for @room.reservations.new,method: :post,url: reservations_confirm_path do |f|  %>
     <% if @room.room_image.attached? %>
@@ -28,11 +29,11 @@
         </tr>
         <tr>
             <th><%= f.label :number_of_people,"人数" %></th>
-            <td><%= f.number_field :number_of_people %></td>
+            <td><%= f.text_field :number_of_people %></td>
         </tr>
     </table>
     <% if user_signed_in? %>
-        <%= f.submit "この日程で予約する" %>
+        <%= f.submit "この予約を確認する" %>
     <% end %>
         
 <%end%>

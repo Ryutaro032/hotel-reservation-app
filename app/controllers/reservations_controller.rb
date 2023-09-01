@@ -8,9 +8,11 @@ class ReservationsController < ApplicationController
 
   def confirm
     @reservation = Reservation.new(reservation_params)
-    @reservation.user_id = current_user.id
-    @reservation.stay_days = (@reservation.check_out_date - @reservation.check_in_date).to_i
+
+    @reservation.user_id      = current_user.id
+    @reservation.stay_days    = (@reservation.check_out_date - @reservation.check_in_date).to_i
     @reservation.total_amount = (@reservation.stay_days * @reservation.number_of_people * @reservation.room.hotel_fee).to_i
+    
     session[:reservations] = @reservation
   end
 
@@ -22,9 +24,14 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    Reservation.create!(session[:reservations])
+    @reservation = Reservation.new(session[:reservations])
+    if @reservation.save
     session.delete(:reservations)
     redirect_to :reservations
+    flash[:notice] = "予約が完了しました"
+    else
+      render reservations_confirm_path
+    end
   end
 
   def destroy
