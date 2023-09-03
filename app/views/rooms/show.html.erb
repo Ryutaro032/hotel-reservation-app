@@ -1,5 +1,4 @@
 <h1>ホテル詳細</h1>
-<%= render "shared/error", obj: @reservation %>
 <div class="table">
 <%= form_with model: @room.reservations, local: true, method: :post,url: reservations_confirm_path do |f|  %>
     <% if @room.room_image.attached? %>

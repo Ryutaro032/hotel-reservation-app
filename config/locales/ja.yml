@@ -1,10 +1,18 @@
 ja:
-   activerecord:
-     models:
-       room: 施設
-     attributes:
-       room:
-         room_name: 施設名
-         hotel_fee: 料金
-         address: 住所
-         introduction: 施設詳細
+  activerecord:
+    models:
+      room: 施設
+    attributes:
+      room:
+        room_name: 施設名
+        hotel_fee: 料金
+        address: 住所
+        introduction: 施設詳細
+
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        name: ユーザー名
+        email: メールアドレス
+        password_confirmation: パスワード
