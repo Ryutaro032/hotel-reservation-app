@@ -13,4 +13,5 @@ ja:
       user:
         name: ユーザー名
         email: メールアドレス
-        password_confirmation: パスワード
+        password_confirmation: パスワード確認用
+        password: パスワード

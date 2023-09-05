@@ -5,10 +5,13 @@
     <% end %>
     <div class="table">
     <%= form_with model: @room.reservations, local: true, method: :post,url: reservations_confirm_path do |f|  %>
-        <% if @room.room_image.attached? %>
-            <%=  image_tag room.room_image %>
-        <%end%>
         <table>
+         <% if @room.room_image.attached? %>
+        <tr>
+            <th></th>
+            <td> <%=  image_tag @room.room_image, class: "hotel-icon" %></td>
+        </tr>
+        <%end%>
         <%= f.hidden_field :room_id, value: @room.id %>
             <tr>
                 <th>施設名</th>

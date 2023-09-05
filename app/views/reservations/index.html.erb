@@ -22,7 +22,7 @@
                 <tr>
                     <td>
                         <% if reservation.room.room_image.attached? %>
-                            <%=  image_tag reservation.room.room_image %>
+                            <%=  image_tag reservation.room.room_image, class: "hotel-icon" %>
                         <% else %>
                             <%= image_tag src='default-image.png', class: "hotel-icon", alt: "施設アイコン" %>
                         <%end%>
