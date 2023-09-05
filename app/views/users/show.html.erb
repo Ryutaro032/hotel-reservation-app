@@ -1,37 +1,41 @@
-<table>
-    <h2>アカウント</h2>
-    <tr>
-         <th>メールアドレス</th>
-        <td><%= @user.email %></td>
-    </tr>
-    <tr>
-         <th>パスワード</th>
-          <td> <p>********</p></td>
-    </tr>
-</table>
-<%= link_to"アカウントを編集する",edit_user_registration_path %>
+<div class="main-container">
+    <div class="user-container">
+        <table>
+            <h2>アカウント</h2>
+            <tr>
+                <th>メールアドレス</th>
+                <td><%= @user.email %></td>
+            </tr>
+            <tr>
+                <th>パスワード</th>
+                <td> <p>********</p></td>
+            </tr>
+        </table>
+        <button class="user-edit-btn"><%= link_to"アカウントを編集する",edit_user_registration_path, class: "link" %></button>
+    </div>
 
-<table>
-    <h2>プロフィール</h2>
-    <tr>
-        <th>ユーザー画像</th>
-        <td>
-            <% if @user.icon_image? %>
-                <img src='<%= @user.icon_image %>' class="user-icon" alt="ユーザーアイコン">
-            <% else %>
-                <%= image_tag src='default.png', class: "user-icon", alt: "ユーザーアイコン" %>
-            <% end %>
-        </td>
-    </tr>
-    <tr>
-        <th>ユーザー名</th>
-        <td><%= @user.name %></td>
-    </tr>
-    <tr>
-        <th>自己紹介</th>
-        <td><%= @user.self_introduce%></td>
-    </tr>
-</table>
-
-
-<%= link_to"プロフィールを編集する", edit_user_path %>
+    <div class="user-container">
+        <table>
+            <h2>プロフィール</h2>
+            <tr>
+                <th>ユーザー画像</th>
+                <td>
+                    <% if @user.icon_image? %>
+                        <img src='<%= @user.icon_image %>' class="user-icon" alt="ユーザーアイコン">
+                    <% else %>
+                        <%= image_tag src='default.png', class: "user-icon", alt: "ユーザーアイコン" %>
+                    <% end %>
+                </td>
+            </tr>
+            <tr>
+                <th>ユーザー名</th>
+                <td><%= @user.name %></td>
+            </tr>
+            <tr>
+                <th>自己紹介</th>
+                <td><%= @user.self_introduce%></td>
+            </tr>
+        </table>
+        <button class="user-edit-btn"><%= link_to"プロフィールを編集する", edit_user_path, class: "link" %></button>
+    </div>
+</div>

@@ -1,17 +1,35 @@
-<h1>検索</h1>
-<div>
+<div class="search-header content-center">
     <div class="search-form">
         <%= form_with( url: rooms_search_path, method: :get) do |f|%>
-            <%= f.search_field :area, placeholder: "エリアを入力" %>
-            <%= f.search_field :word, placeholder: "キーワードを入力" %>
-             <%= f.submit "検索" %>
+        <ul class="search-lists">
+            <li><%= f.search_field :area, placeholder: "エリアを入力",    class: "search-list-item" %></li>
+            <li><%= f.search_field :word, placeholder: "キーワードを入力", class: "search-list-item" %></li>
+            <%= f.submit "検索", class: "search-list-item search-btn" %>
+        </ul>
         <%end%>
     </div>
-    <div class="area-link">
-        <%= link_to (image_tag ("kyoto.jpg"),   class: "area-image"), rooms_search_path(link_name: "京都") %>
-        <%= link_to (image_tag ("osaka.jpg"),   class: "area-image"), rooms_search_path(link_name: "大阪") %>
-        <%= link_to (image_tag ("sapporo.jpg"), class: "area-image"), rooms_search_path(link_name: "札幌") %>
-        <%= link_to (image_tag ("tokyo.jpg"),   class: "area-image"), rooms_search_path(link_name: "東京") %>
+    <% if flash[:notice] %>
+        <p class="notice"><%= flash[:notice] %></p>
+    <% end %>
+</div>
+<div class="area-container">
+    <h2>おすすめのエリア</h2>
+    <div class="area-link content-center">
+        <div class="area-content">
+            <p>京都</p>
+            <%= link_to (image_tag ("kyoto.jpg"),   class: "area-image"), rooms_search_path(link_name: "京都") %>
+        </div>
+        <div class="area-content">
+             <p>大阪</p>
+             <%= link_to (image_tag ("osaka.jpg"),   class: "area-image"), rooms_search_path(link_name: "大阪") %>
+        </div>
+        <div class="area-content">
+            <p>札幌</p>
+            <%= link_to (image_tag ("sapporo.jpg"), class: "area-image"), rooms_search_path(link_name: "札幌") %>
+        </div>
+        <div class="area-content">
+            <p>東京</p>
+            <%= link_to (image_tag ("tokyo.jpg"),   class: "area-image"), rooms_search_path(link_name: "東京") %>
+        </div>
     </div>
 </div>
-

@@ -16,7 +16,7 @@ class ReservationsController < ApplicationController
     session[:reservations] = @reservation
   end
 
-  def back
+  def room_back
     @reservation = Reservation.new(session[:reservations])
     @reservation.user_id = current_user.id
     session.delete(:reservations)
@@ -50,15 +50,15 @@ class ReservationsController < ApplicationController
       @reservation = Reservation.new(reservation_params)
       if @reservation.check_in_date == nil || @reservation.check_out_date == nil || @reservation.number_of_people == nil
         redirect_to room_path(@reservation.room_id)
-        flash[:notice] = "必須項目を入力してください"
+        flash[:alert] = "必須項目を入力してください"
       else
         @total_days = (@reservation.check_out_date - @reservation.check_in_date).to_i
         if @total_days < 0
           redirect_to room_path(@reservation.room_id)
-          flash[:notice] = "終了日は開始日以降にしてください"
+          flash[:alert] = "終了日は開始日以降にしてください"
         elsif @reservation.number_of_people <= 0
           redirect_to room_path(@reservation.room_id)
-          flash[:notice] = "人数は１人以上にしてください"
+          flash[:alert] = "人数は１人以上にしてください"
         end
       end
     end

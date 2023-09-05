@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   end 
 
   post 'reservations/confirm' 
-  post 'reservations/back'
+  post 'reservations/room_back'
 
 end

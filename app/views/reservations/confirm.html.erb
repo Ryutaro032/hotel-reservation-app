@@ -1,31 +1,33 @@
-<h1>予約内容確認</h1>
-<%= render "shared/error", obj: @reservation %>
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>合計料金(円)</th>
-                <th>チェックイン日</th>
-                <th>チェックアウト日</th>
-                <th>宿泊日数</th>
-                <th>人数</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><%= @reservation.total_amount %></td>
-                <td><%= @reservation.check_in_date %></td>
-                <td><%= @reservation.check_out_date %></td>
-                <td><%= @reservation.stay_days %></td>
-                <td><%= @reservation.number_of_people %></td>
-            </tr>
-        </tbody>
-    </table>
-    <%= form_with model: @reservation do |f| %>
-        <%= f.submit "送信する" %>
-    <%end%>
-    <%= form_with model: @reservation, url: reservations_back_path do |f| %>
-        <%= f.submit "戻る" %>
-    <%end%>
+<div class="main-container">
+    <h1>予約内容確認</h1>
+    <%= render "shared/error", obj: @reservation %>
+    <div class="table">
+        <table>
+            <thead>
+                <tr>
+                    <th>合計料金(円)</th>
+                    <th>チェックイン日</th>
+                    <th>チェックアウト日</th>
+                    <th>宿泊日数</th>
+                    <th>人数</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><%= @reservation.total_amount %></td>
+                    <td><%= @reservation.check_in_date.strftime("%Y/%m/%d") %></td>
+                    <td><%= @reservation.check_out_date.strftime("%Y/%m/%d") %></td>
+                    <td><%= @reservation.stay_days %></td>
+                    <td><%= @reservation.number_of_people %></td>
+                </tr>
+            </tbody>
+        </table>
+        <%= form_with model: @reservation do |f| %>
+            <%= f.submit "送信する" %>
+        <%end%>
+        <%= form_with model: @reservation, url: reservations_room_back_path do |f| %>
+            <%= f.submit "戻る" %>
+        <%end%>
+    </div>
 </div>
 
