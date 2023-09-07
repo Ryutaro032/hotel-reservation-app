@@ -19,7 +19,6 @@
             <tbody>
             <% @rooms.each do |room| %>
                 <tr>
-                    <td><%= room.id%></td>
                     <td>
                         <% if room.room_image.attached? %>
                             <%=  image_tag room.room_image , class: "hotel-icon" %>

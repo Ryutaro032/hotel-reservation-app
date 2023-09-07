@@ -5,7 +5,7 @@ class Room < ApplicationRecord
 
     validates :room_name,    presence: true
     validates :introduction, presence: true
-    validates :hotel_fee,    presence: true
+    validates :hotel_fee,    presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 0}
     validates :address,      presence: true
 
     def self.search(search)
