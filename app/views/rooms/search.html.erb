@@ -1,0 +1,29 @@
+<div class="main-container">
+    <div class="search-form">
+        <%= form_with( url: rooms_search_path, method: :get) do |f|%>
+            <%= f.search_field :area, placeholder: "エリアを入力" %>
+            <%= f.search_field :word, placeholder: "キーワードを入力" %>
+                <%= f.submit "検索" %>
+        <%end%>
+    </div>
+
+    <div class="table">
+        <table>
+        <% @rooms.each do |room| %>
+            <tr>
+                <td>
+                    <% if room.room_image.attached? %>
+                        <%=  image_tag room.room_image, class: "hotel-icon" %>
+                    <% else %>
+                        <%= image_tag src='default-image.png', class: "hotel-icon", alt: "施設アイコン" %>
+                    <%end%>
+                </td>
+                <td><%= link_to room.room_name, room %></td>
+                <td><%= room.introduction %></td>
+                <td><%= room.hotel_fee %>〜</td>
+                <td><%= room.created_at.to_s(:datetime) %></td>
+            </tr>
+        <% end %>
+        </table>
+    </div>
+</div>

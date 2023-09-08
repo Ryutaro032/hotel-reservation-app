@@ -1,0 +1,42 @@
+<div class="main-container">
+    <h1>予約済み一覧</h1>
+    <% if flash[:notice] %>
+        <p class="notice"><%= flash[:notice] %></p>
+    <% end %>
+    <div class="table">
+        <table>
+            <thead>
+                <tr>
+                    <th>施設画像</th>
+                    <th>施設名</th>
+                    <th>施設の紹介</th>
+                    <th>合計料金(円)</th>
+                    <th>チェックイン日</th>
+                    <th>チェックアウト日</th>
+                    <th>予約確定日時</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            <% @reservations.each do |reservation| %>
+                <tr>
+                    <td>
+                        <% if reservation.room.room_image.attached? %>
+                            <%=  image_tag reservation.room.room_image, class: "hotel-icon" %>
+                        <% else %>
+                            <%= image_tag src='default-image.png', class: "hotel-icon", alt: "施設アイコン" %>
+                        <%end%>
+                    </td>
+                    <td><%= link_to reservation.room.room_name, reservation.room %></td>
+                    <td><%= reservation.room.introduction %></td>            
+                    <td><%= reservation.total_amount %></td>
+                    <td><%= reservation.check_in_date.strftime("%Y/%m/%d") %></td>
+                    <td><%= reservation.check_out_date.strftime("%Y/%m/%d") %></td>
+                    <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
+                    <td><%= link_to "削除", reservation, method: :delete, data: { confirm: "本当に削除しますか？" }%></td>
+                </tr>
+            <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>

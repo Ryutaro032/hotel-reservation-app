@@ -1,0 +1,33 @@
+<div class="header">
+    <div class="header-left">
+        <h2>STATION</h2>
+    </div>
+    <% if user_signed_in? %>
+        <div class="header-right" id = "btn">
+            <div class="profile-icon">
+                <% if current_user.icon_image? %>
+                    <img src='<%= current_user.icon_image %>' class="user-icon" alt="ユーザーアイコン">
+                <% else %>
+                    <%= image_tag src='default.png', class: "user-icon", alt: "ユーザーアイコン" %>
+                <% end %>
+            </div>
+            <p class="name"><%= current_user.name %></p>
+            <nav class="dropdown" >
+                <ul class="dropdown-list" id = "dropdown_list" >
+                    <li class="dropdown-item"><%=link_to"施設の登録", :new_room , class: "link"%></li>
+                    <li class="dropdown-item"><%= link_to"登録施設一覧", rooms_home_path, class: "link" %></li>
+                    <li class="dropdown-item"><%= link_to"予約済み一覧", :reservations, class: "link" %></li>
+                    <li class="dropdown-item"><%= link_to"アカウント設定", user_path(id: current_user), class: "link" %></li>
+                    <li class="dropdown-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "link" %></li>
+                </ul>
+            </nav>
+        </div>
+    <% else %>
+        <div>
+            <ul class="header-nav">
+                <li><%= link_to "ログイン", new_user_session_path, class: "header-nav-list link" %></li>
+                <li><%= link_to "新規登録", new_user_registration_path, class: "header-nav-list link" %></li>
+            </ul>
+        </div>
+    <% end %>
+</div>
